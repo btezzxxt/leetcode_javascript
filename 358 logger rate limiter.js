@@ -3,9 +3,6 @@
  */
 var Logger = function() {
     var map = {};
-    var createNew = function (){
-        return new Logger();
-    }
 };
 
 /**
@@ -33,8 +30,9 @@ Logger.prototype.shouldPrintMessage = function(timestamp, message) {
 };
 
 
-var obj = Object.create(Logger).createNew();
-console.log(obj.shouldPrintMessage(1,"foo"));
+ var obj = Object.create(Logger).createNew()
+ console.log(obj.shouldPrintMessage(1,"foo"));
 console.log(obj.shouldPrintMessage(2,"foo"));
+
 
 
