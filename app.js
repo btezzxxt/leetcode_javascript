@@ -1,40 +1,9 @@
-/**
- * Initialize your data structure here.
- */
-var Logger = function() {
-    var map = {};
-    var createNew = function (){
-        return new Logger();
+var minMoves = function(nums) {
+    var m = Math.max.apply(null, nums);
+    var r = 0;
+    for (var i =0; i < nums.length; i++ ){
+        r += Math.abs(nums[i] - m);
     }
+    return r;
 };
-
-/**
- * Returns true if the message should be printed in the given timestamp, otherwise returns false.
-        If this method returns false, the message will not be printed.
-        The timestamp is in seconds granularity. 
- * @param {number} timestamp 
- * @param {string} message
- * @return {boolean}
- */
-Logger.prototype.shouldPrintMessage = function(timestamp, message) {
-    if (map.hasOwnProperty(message)){
-        if (timestamp - map[message] < 10) {
-            return false;
-        } 
-        else {
-            map[message] = timestamp;
-            return true;
-        }
-    }
-    else {
-        map[message] = timestamp;
-        return true;
-    }
-};
-
-
-var obj = Object.create(Logger).createNew();
-console.log(obj.shouldPrintMessage(1,"foo"));
-console.log(obj.shouldPrintMessage(2,"foo"));
-
-
+console.log(minMoves([1 ,2,3]));
