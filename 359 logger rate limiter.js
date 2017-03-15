@@ -2,7 +2,7 @@
  * Initialize your data structure here.
  */
 var Logger = function() {
-    var map = {};
+    this.map = {};
 };
 
 /**
@@ -14,25 +14,23 @@ var Logger = function() {
  * @return {boolean}
  */
 Logger.prototype.shouldPrintMessage = function(timestamp, message) {
-    if (map.hasOwnProperty(message)){
-        if (timestamp - map[message] < 10) {
+    if (this.map.hasOwnProperty(message)){
+        if (timestamp - this.map[message] < 10) {
             return false;
         } 
         else {
-            map[message] = timestamp;
+            this.map[message] = timestamp;
             return true;
         }
     }
     else {
-        map[message] = timestamp;
+        this.map[message] = timestamp;
         return true;
     }
 };
 
 
- var obj = Object.create(Logger).createNew()
- console.log(obj.shouldPrintMessage(1,"foo"));
+var obj = new Logger();
+console.log(obj.shouldPrintMessage(1,"foo"));
 console.log(obj.shouldPrintMessage(2,"foo"));
-
-
 
